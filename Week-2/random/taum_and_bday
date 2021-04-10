@@ -1,0 +1,20 @@
+//Question link: https://www.hackerrank.com/challenges/taum-and-bday/problem
+
+long taumBday(int b, int w, int bc, int wc, int z) {
+    long cost = 0;
+    if(bc < wc){
+        cost += (long)bc*b;
+        if(bc+z < wc)
+           cost += (long)w*(bc+z);
+        else
+           cost += (long)w*wc;     
+    }
+    else{
+        cost += (long)w*wc;
+        if(wc+z < bc)
+           cost += (long)b*(wc+z);
+        else 
+           cost += (long)b*bc;
+    }
+    return cost;
+}

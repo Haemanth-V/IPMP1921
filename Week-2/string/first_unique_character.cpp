@@ -1,5 +1,6 @@
 //Question link: https://leetcode.com/problems/first-unique-character-in-a-string/
 
+//Method 1
 class Solution {
 public:
     int firstUniqChar(string s) {
@@ -15,5 +16,19 @@ public:
         if(uniq.size() == 0)
             return -1;
         return find(s.begin(), s.end(), uniq[0]) - s.begin();
+    }
+};
+
+//Method 2
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int count[26] = {0};
+        for(int i=0; i<s.length(); i++)
+            count[s[i]-'a']++;
+        for(int i=0; i<s.length(); i++)
+            if(count[s[i]-'a'] == 1)
+                return i;
+        return -1;
     }
 };

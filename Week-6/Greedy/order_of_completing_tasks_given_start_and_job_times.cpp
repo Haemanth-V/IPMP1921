@@ -14,3 +14,13 @@ bool cmp(vector<int> &a, vector<int> &b){
        return a[0] < b[0];
     return t1 < t2;
 }
+
+vector<int> jimOrders(vector<vector<int>> orders) {
+    vector<int> orderOfReceiving;
+    for(int i=0; i<orders.size(); i++)
+        orders[i].insert(orders[i].begin(), i+1);
+    sort(orders.begin(), orders.end(), cmp);
+    for(int i=0; i<orders.size(); i++)
+        orderOfReceiving.push_back(orders[i][0]);
+    return orderOfReceiving;
+}

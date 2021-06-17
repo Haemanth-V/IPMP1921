@@ -19,7 +19,7 @@ public:
 };
 
 
-//DP
+//DP - Bottom up
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
@@ -39,5 +39,24 @@ public:
             }
         
         return dp[n-1][amount];
+    }
+};
+
+
+//DP - Top down
+class Solution {
+public:
+    int change(int amount, vector<int>& coins) {
+        int dp[amount+1];
+        fill_n(dp, amount+1, 0);
+        
+        dp[0] = 1;
+        
+        for(int i=0; i<coins.size(); i++)
+            for(int j=coins[i]; j<=amount; j++){
+                dp[j] += dp[j-coins[i]];
+            }
+        
+        return dp[amount];
     }
 };
